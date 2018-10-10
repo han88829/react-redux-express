@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.1.0",
+    "@babel/plugin-proposal-decorators": "^7.1.2",
     "@svgr/webpack": "2.4.1",
     "antd": "^3.10.0",
     "babel-core": "7.0.0-bridge.0",
@@ -45,6 +46,10 @@
     "react-app-rewired": "^1.6.2",
     "react-dev-utils": "^6.0.4",
     "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
     "resolve": "1.8.1",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.0",
@@ -108,6 +113,14 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
     ]
   }
 }
