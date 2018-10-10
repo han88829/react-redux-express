@@ -61,7 +61,7 @@
     "workbox-webpack-plugin": "3.6.2"
   },
   "scripts": {
-    "start": "node node_modules/react-app-rewired/scripts/start",
+    "start": "node node_modules/react-app-rewired/scripts/start --scripts-version D:/project/react-redux-express/view",
     "build": "node node_modules/react-app-rewired/scripts/build",
     "test": "node node_modules/react-app-rewired/scripts test --env=jsdom"
   },
