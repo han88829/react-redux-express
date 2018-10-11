@@ -1,45 +1,34 @@
-import React from "react";
-import ReactDom from "react-dom";
-import RouteComponent from "./Route";
-import { createStore, applyMiddleware, compose } from "redux";
-import counter, { onAdd, onDecrease } from "./index.redux";
-import thunk from "redux-thunk";
-import { Provider } from "react-redux";
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import React from 'react'
+import ReactDom from 'react-dom'
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import { Provider } from 'react-redux'
+import { BrowserRouter, Route, Redirect,Switch } from 'react-router-dom'
 
-// 配合chrome调试工具
-const reduxDevTools = window.devToolsExtension
-  ? window.devToolsExtension()
-  : () => {};
+import Login from './container/login/login'
+import Register from './container/register/register'
+import AuthRoute from './component/authroute/authroute'
+import reducers from './reducer'
+import './config'
+import './index.css'
 
-const store = createStore(
-  counter,
-  compose(
-    applyMiddleware(thunk),
-    reduxDevTools
-  )
-);
-
+const store = createStore(reducers, compose(
+	applyMiddleware(thunk),
+	window.devToolsExtension?window.devToolsExtension():f=>f
+))
+function Boss(){
+	return <h2>BOSS页面</h2>
+}
 ReactDom.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <ul>
-        <li>
-          <Link to="/">首页</Link>
-        </li>
-        <li>
-          <Link to="/else">其他</Link>
-        </li>
-        <li>
-          <Link to="/404">404</Link>
-        </li>
-        <Switch>
-          <Route path="/" exact component={RouteComponent} />
-          <Route path="/else" component={() => "其他页面"} />
-          <Route component={() => "404"} />
-        </Switch>
-      </ul>
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById("root")
-);
+	(<Provider store={store}>
+		<BrowserRouter>
+			<div>
+				<AuthRoute></AuthRoute>
+				<Route path='/boss' component={Boss}></Route>
+				<Route path='/login' component={Login}></Route>
+				<Route path='/register' component={Register}></Route>
+			</div>
+		</BrowserRouter>
+	</Provider>),
+	document.getElementById('root')
+)

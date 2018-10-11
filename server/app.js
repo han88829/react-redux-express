@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
   res.end("Hello Word!");
 });
 
-app.get("/user", (req, res) => {
+app.get("/user/info", (req, res) => {
   User.find({}, (err, data) => {
     res.json(data);
   });

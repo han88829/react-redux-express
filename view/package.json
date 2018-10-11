@@ -6,7 +6,8 @@
     "@babel/core": "7.1.0",
     "@babel/plugin-proposal-decorators": "^7.1.2",
     "@svgr/webpack": "2.4.1",
-    "antd": "^3.10.0",
+    "antd-mobile": "^2.2.5",
+    "axios": "^0.18.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
@@ -122,5 +123,6 @@
         }
       ]
     ]
-  }
+  },
+  "proxy": "http://localhost:3005"
 }
